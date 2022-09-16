@@ -3,26 +3,22 @@ import Message from './Message'
 import { db } from './Firebase'
 import { v4 as uuid } from 'uuid'
 import { collection, onSnapshot, addDoc, serverTimestamp, query, orderBy } from 'firebase/firestore'
+import { UserAuth } from './AuthContext'
 
 
+const Input = () => {
 
-
-
-const Input = (props) => {
-
+    const { user } = UserAuth()
     const [input, setInput] = useState('')
     const [messages, setMessages] = useState([])
-
     const newMessage = useRef(null)
-
-    console.log(props.username)
 
     const sendMessage = (event) => {
         event.preventDefault();
         const dataRef = collection(db, 'messages')
-        addDoc(dataRef, { message: input, username: props.username, timeStamp: serverTimestamp() })
+        addDoc(dataRef, { message: input, username: user.displayName, timeStamp: serverTimestamp() })
 
-        setMessages([...messages, { username: props.username, message: input }])
+        setMessages([...messages, { username: user.displayName, message: input }])
         setInput('')
         newMessage.current?.scrollIntoView({ behavior: "smooth",  });
     }
@@ -58,7 +54,7 @@ const Input = (props) => {
 
             <div className="message-section">
                     {messages.map(message => {
-                        return <Message key={uuid()} username={props.username} message={message} />
+                        return <Message key={uuid()} username={user.displayName} message={message} />
                     })}
                     <div  ref={newMessage}></div>
 

@@ -1,32 +1,26 @@
-import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header'
 import Login from './components/Login'
 import Input from './components/Input'
-
-
-
-
+import { AuthContextProvider } from './components/AuthContext'
+import Protected from './components/Protected';
 
 
 function App() {
 
-
-  const [user, setUser] = useState('')
-  const onSubmit = (value) => {
-    setUser(value)
-  }
   return (
     <>
+    <AuthContextProvider>
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<Login onSubmit={onSubmit}/>}/>
-        <Route path='/chat' element={<Input username={user} />} />
+        <Route path='/' element={<Login/>}/>
+        <Route path='/chat' 
+        element={ <Protected><Input/></Protected>} />
       </Routes>
-
     </BrowserRouter>
+    </AuthContextProvider>
     </>
   );
 }
