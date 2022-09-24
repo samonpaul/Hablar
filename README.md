@@ -1,5 +1,6 @@
-Hablar - Group Chat App
+# Hablar - Group Chat App
 
 -- React and Firebase 
--- Multiple Rooms to be added soon..
--- Authentication using Firebase
+-- Google Authentication
+
+LIVE DEMO -- https://hablar-chat-app.netlify.app/
