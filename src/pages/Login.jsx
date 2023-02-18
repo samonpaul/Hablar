@@ -1,23 +1,46 @@
-import { Link } from "react-router-dom"
+import { useRef, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
+import { auth } from "../services/Firebase"
 
 const Login = () => {
+
+  const { login } = useAuth()
+  const navigate = useNavigate()
+  const [error, setError] = useState('')
+  const emailRef = useRef()
+  const passwordRef = useRef()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try{
+      await login(auth, emailRef.current.value, passwordRef.current.value)
+      navigate('/')
+    }catch(e){
+      console.log(e)
+      setError(`Wrong Credentials`)
+    } 
+    
+  }
+
   return (
     <div className="container-fluid d-flex justify-content-center align-items-center vh-100">
       <div className="login__container p-4 rounded bg-light">
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <div className="mb-4 mt-2">
             <h3 className="mb-0">Login</h3>
           </div>
-          {/* {error.length !== 0 && <div className="alert alert-danger mb-3" role="alert">
+          {error.length !== 0 && <div className="alert alert-danger mb-3" role="alert">
             {error}
-          </div>} */}
+          </div>}
           <div className="mb-3 w-100">
             <label htmlFor="email" className="form-label">Email</label>
-            <input type="email" className="form-control" id="email" required />
+            <input type="email" className="form-control" id="email" required ref={emailRef}/>
           </div>
           <div className="mb-4 w-100">
             <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" className="form-control" id="password" required />
+            <input type="password" className="form-control" id="password" required ref={passwordRef}/>
           </div>
           <div className="mb-3 w-100">
             <button type="submit" className="btn btn-submit w-100">Login</button>
