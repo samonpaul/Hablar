@@ -30,7 +30,7 @@ const Register = () => {
       }
 
     }else {
-      setError(`Password don't match`)
+      setError(`PasswordS don't match`)
     }
   }
 
