@@ -1,8 +1,7 @@
-import { collection, doc, getDocs, onSnapshot, setDoc } from "firebase/firestore"
+
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
-import { db } from "../services/Firebase"
 import ChatRoom from "./ChatRoom"
 
 

@@ -17,7 +17,7 @@ const Room = () => {
     const messageRef = collection(db, id)
 
     useEffect(() => {
-        const queryMessage = query(messageRef, orderBy('timeStamp'), limit(20))
+        const queryMessage = query(messageRef, orderBy('timeStamp'))
         const unsubscribe = onSnapshot(queryMessage, (snapshot) => {
             let allMessages = []
             snapshot.forEach(doc => {
@@ -39,7 +39,12 @@ const Room = () => {
         const dataRef = collection(db, id)
         let valueText = input
         setInput('')
-        await addDoc(dataRef, { text: valueText, name: currentUser.displayName, timeStamp: serverTimestamp()})
+        try {
+            await addDoc(dataRef, { text: valueText, name: currentUser.displayName, timeStamp: serverTimestamp()})
+        }catch(e){
+            console.log(e)
+        }
+
     }
 
     return (
