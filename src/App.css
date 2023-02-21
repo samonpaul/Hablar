@@ -30,3 +30,65 @@
 .chatroom {
     background-color: var(--color-primary);
 }
+
+
+/* room */
+.room_container {
+    width: 700px;
+    height: 100%;
+    background-color: var(--color-primary);
+    border-radius: 8px;
+}
+
+.input_box {
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: var(--color-primary);
+}
+
+.messages-block {
+    height: 78.5vh;
+    overflow: auto;
+}
+.messages-block::-webkit-scrollbar {
+    width: 8px;
+}
+.messages-block::-webkit-scrollbar-track {
+    background: var(--color-secondary);
+}
+.messages-block::-webkit-scrollbar-thumb  {
+    background: var(--color-gray);
+}
+
+.send-message {
+    padding: 0;
+}
+.text-input::placeholder {
+    color: #ccc;
+}
+
+.message_container {
+    display: inline-block;
+    background-color: var(--color-secondary);
+}
+.recieved {
+    background-color: var(--color-light-gray);
+
+}
+.recieved p {
+    color: var(--color-dark) !important;
+}
+.username{
+    color: var(--color-gray);
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.back-icon {
+    background-color: var(--color-secondary);
+    cursor: pointer;
+}
+.back-icon i {
+    color: var(--color-light-gray);
+}

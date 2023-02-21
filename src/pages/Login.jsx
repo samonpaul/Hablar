@@ -19,7 +19,7 @@ const Login = () => {
       navigate('/')
     }catch(e){
       console.log(e)
-      setError(`Wrong Credentials`)
+      setError(e.code)
     } 
     
   }

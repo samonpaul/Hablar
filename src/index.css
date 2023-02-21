@@ -3,6 +3,8 @@
     --color-secondary: #263159;
     --color-white: #fff;
     --color-dark: #333;
+    --color-gray: #acacac;
+    --color-light-gray: #ececec;
 }
 
 body {

@@ -1,6 +1,8 @@
+import { collection, doc, getDocs, onSnapshot, setDoc } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
+import { db } from "../services/Firebase"
 import ChatRoom from "./ChatRoom"
 
 
@@ -10,12 +12,6 @@ const Main = () => {
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
-
-    useEffect(() => {
-        if(!currentUser?.displayName){
-            navigate('/username')
-        }
-    }, [])
 
     const handleLogout = async () => {
         try {
@@ -39,8 +35,8 @@ const Main = () => {
                 <hr className="text-white mb-4" />
 
                 <div className="chatroom_container">
-                    <ChatRoom name="Room No 1" />
-                    <ChatRoom name="Room No 2" />
+                    <ChatRoom name="ReactDevs" />
+                    <ChatRoom name="JavaScriptPeeps" />
                 </div>
             </div>
         </div>

@@ -25,12 +25,11 @@ const Register = () => {
         await signup(auth, emailRef.current.value, passwordRef.current.value)
         navigate('/username')
       }catch(e){
-        console.log(e)
-        setError('Unable to create account')
+        setError(e.code)
       }
 
     }else {
-      setError(`PasswordS don't match`)
+      setError(`Passwords don't match`)
     }
   }
 

@@ -6,6 +6,7 @@ import Register from './pages/Register'
 import { AuthProvider } from './context/AuthContext'
 import { ProtectedUsername, ProtetedDashboard } from './protected/ProtectedRoutes'
 import Username from './pages/Username'
+import Room from './pages/Room'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           </Route>
           <Route element={<ProtetedDashboard />}>
             <Route exact path="/" element={<Dashboard />} />
+            <Route path='/room/:id' element={<Room />} />
           </Route>
         </Routes>
       </AuthProvider>
