@@ -1,14 +1,13 @@
 import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore'
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
 import MessageComp from '../components/MessageComp'
 import { useAuth } from '../context/AuthContext'
 import { db } from '../services/Firebase'
 
-const Room = () => {
+const Room = ({ id }) => {
 
-    const { id } = useParams()
     const { currentUser } = useAuth()
     const emptyRef = useRef()
 

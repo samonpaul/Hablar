@@ -21,7 +21,8 @@ function App() {
           </Route>
           <Route element={<ProtetedDashboard />}>
             <Route exact path="/" element={<Dashboard />} />
-            <Route path='/room/:id' element={<Room />} />
+            <Route path='/room/ReactDevs' element={<Room id="ReactDevs"/>} />
+            <Route path='/room/JavaScriptPeeps' element={<Room id="JavaScriptPeeps"/>} />
           </Route>
         </Routes>
       </AuthProvider>
