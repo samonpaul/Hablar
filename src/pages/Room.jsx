@@ -1,6 +1,7 @@
-import { addDoc, collection, limit, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore'
+import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore'
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import Loader from '../components/Loader'
 import MessageComp from '../components/MessageComp'
 import { useAuth } from '../context/AuthContext'
 import { db } from '../services/Firebase'
@@ -11,12 +12,14 @@ const Room = () => {
     const { currentUser } = useAuth()
     const emptyRef = useRef()
 
+    const [isLoading, setIsLoading] = useState(false)
     const [input, setInput] = useState('')
     const [messages, setMessages] = useState([])
 
     const messageRef = collection(db, id)
 
     useEffect(() => {
+        setIsLoading(true)
         const queryMessage = query(messageRef, orderBy('timeStamp'))
         const unsubscribe = onSnapshot(queryMessage, (snapshot) => {
             let allMessages = []
@@ -24,6 +27,7 @@ const Room = () => {
                 allMessages.push({ data: doc.data(), id: doc.id })
             })
             setMessages(allMessages)
+            setIsLoading(false)
         })
 
         return () => unsubscribe()
@@ -45,6 +49,10 @@ const Room = () => {
             console.log(e)
         }
 
+    }
+
+    if(isLoading){
+        return <Loader />
     }
 
     return (

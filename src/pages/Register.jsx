@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import LoaderRing from "../components/LoaderRing"
 import { useAuth } from "../context/AuthContext"
 import { auth } from "../services/Firebase"
 
@@ -13,9 +14,11 @@ const Register = () => {
   const emailRef = useRef()
   const passwordRef = useRef()
   const confirmPassword = useRef()
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
 
     setError('')
 
@@ -23,7 +26,9 @@ const Register = () => {
       
       try {
         await signup(auth, emailRef.current.value, passwordRef.current.value)
+        setIsLoading(false)
         navigate('/username')
+
       }catch(e){
         setError(e.code)
       }
@@ -56,7 +61,7 @@ const Register = () => {
             <input type="password" className="form-control" id="confirm-password" required ref={confirmPassword}/>
           </div>
           <div className="mb-3 w-100">
-            <button type="submit" className="btn btn-submit w-100">Register</button>
+            <button type="submit" className="btn btn-submit w-100">{isLoading ? <LoaderRing /> : "Register"}</button>
           </div>
           <div className="mb-3 d-flex">
             <p className="mb-0 text-muted me-1">Already have an account ?</p>

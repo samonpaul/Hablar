@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import LoaderRing from "../components/LoaderRing"
 import { useAuth } from "../context/AuthContext"
 import { auth } from "../services/Firebase"
 
@@ -10,12 +11,15 @@ const Login = () => {
   const [error, setError] = useState('')
   const emailRef = useRef()
   const passwordRef = useRef()
+  const [isloading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
 
     try{
       await login(auth, emailRef.current.value, passwordRef.current.value)
+      setIsLoading(false)
       navigate('/')
     }catch(e){
       console.log(e)
@@ -44,7 +48,7 @@ const Login = () => {
             <input type="password" className="form-control" id="password" required ref={passwordRef}/>
           </div>
           <div className="mb-3 w-100">
-            <button type="submit" className="btn btn-submit w-100">Login</button>
+            <button type="submit" className="btn btn-submit w-100 py-2">{isloading ? <LoaderRing /> : 'Login' }</button>
           </div>
           <div className="mb-3 d-flex">
             <p className="mb-0 text-muted me-1">Don't have an account ?</p>

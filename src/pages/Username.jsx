@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import LoaderRing from "../components/LoaderRing"
 import { useAuth } from "../context/AuthContext"
 
 const Username = () => {
@@ -8,9 +9,12 @@ const Username = () => {
     const usernameRef = useRef()
     const[error, setError] = useState('')
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        setIsLoading(true)
 
         let item = {
             displayName: usernameRef.current.value
@@ -18,6 +22,7 @@ const Username = () => {
 
         try {   
             await username(currentUser, item)
+            setIsLoading(false)
             navigate('/')
         }catch(e){
             console.log(e)
@@ -39,7 +44,7 @@ const Username = () => {
                         <input type="text" className="form-control" id="username" required ref={usernameRef} />
                     </div>
                     <div className="mb-3 w-100">
-                        <button type="submit" className="btn btn-submit w-100">Submit</button>
+                        <button type="submit" className="btn btn-submit w-100">{isLoading ? <LoaderRing /> : "Submit"}</button>
                     </div>
                 </form>
             </div>
