@@ -51,8 +51,8 @@ const Login = () => {
             <button type="submit" className="btn btn-submit w-100 py-2">{isloading ? <LoaderRing /> : 'Login' }</button>
           </div>
           <div className="mb-3 d-flex">
-            <p className="mb-0 text-muted me-1">Don't have an account ?</p>
-            <Link to="/register" className="mb-0 pointer text-primary text-decoration-none">Register</Link>
+            <p className="mb-0 text-muted me-1 switch-text">Don't have an account ?</p>
+            <Link to="/register" className="mb-0 pointer text-primary text-decoration-none switch-text">Register</Link>
           </div>
         </form>
       </div>

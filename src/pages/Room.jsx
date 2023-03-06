@@ -56,11 +56,11 @@ const Room = () => {
     }
 
     return (
-        <div className='vh-100 vw-100 py-2'>
+        <div className='vh-100 vw-100 py-md-2 py-lg-2 py-sm-0'>
             <div className='room_container m-auto position-relative'>
-                <div className='py-3 px-4 d-flex border-bottom border-secondary rounded-top align-items-center'>
+                <div className='py-3 px-md-4 px-lg-4 px-2 d-flex border-bottom border-secondary rounded-top align-items-center room__header'>
                     <Link to='/' className='mb-0 me-2 px-2 py-1 back-icon rounded'><i className="fa-solid fa-arrow-left"></i></Link>
-                    <p className='mb-0 text-white fs-5'>{id}</p>
+                    <p className='mb-0 text-white fs-5 room-id'>{id}</p>
                 </div> 
 
                 <div className="messages-block pt-2" >

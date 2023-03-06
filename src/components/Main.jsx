@@ -20,14 +20,14 @@ const Main = () => {
     }
 
     return (
-        <div className="px-4">
+        <div className="px-lg-4">
             {error.length !== 0 && <div className="alert alert-danger mb-3" role="alert">
                 {error}
             </div>}
 
-            <div className="container px-3 py-3">
+            <div className="container-lg px-3 py-3">
                 <div className="d-flex justify-content-between align-items-center">
-                    <h3 className="mb-0 text-white mb-2">Chat Rooms</h3>
+                    <h3 className="mb-0 text-white mb-2 room-sub-heading">Chat Rooms</h3>
                     <button className="btn btn-dark" onClick={handleLogout}>Logout</button>
                 </div>
                 <hr className="text-white mb-4" />

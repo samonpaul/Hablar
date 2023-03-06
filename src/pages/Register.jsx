@@ -64,8 +64,8 @@ const Register = () => {
             <button type="submit" className="btn btn-submit w-100">{isLoading ? <LoaderRing /> : "Register"}</button>
           </div>
           <div className="mb-3 d-flex">
-            <p className="mb-0 text-muted me-1">Already have an account ?</p>
-            <Link to="/login" className="mb-0 pointer text-primary text-decoration-none">Login</Link>
+            <p className="mb-0 text-muted me-1 switch-text">Already have an account ?</p>
+            <Link to="/login" className="mb-0 pointer text-primary text-decoration-none switch-text">Login</Link>
           </div>
         </form>
       </div>
