@@ -31,10 +31,12 @@ const Register = () => {
 
       }catch(e){
         setError(e.code)
+        setIsLoading(false)
       }
 
     }else {
       setError(`Passwords don't match`)
+      setIsLoading(false)
     }
   }
 

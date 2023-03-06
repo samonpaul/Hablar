@@ -16,6 +16,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
+    setError('')
 
     try{
       await login(auth, emailRef.current.value, passwordRef.current.value)
@@ -24,6 +25,7 @@ const Login = () => {
     }catch(e){
       console.log(e)
       setError(e.code)
+      setIsLoading(false)
     } 
     
   }

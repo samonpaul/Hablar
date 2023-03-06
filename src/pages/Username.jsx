@@ -15,6 +15,7 @@ const Username = () => {
         e.preventDefault()
 
         setIsLoading(true)
+        setError('')
 
         let item = {
             displayName: usernameRef.current.value
@@ -25,8 +26,8 @@ const Username = () => {
             setIsLoading(false)
             navigate('/')
         }catch(e){
-            console.log(e)
             setError('Unable to proceed')
+            setIsLoading(false)
         }
     }
 
