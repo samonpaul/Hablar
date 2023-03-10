@@ -58,22 +58,24 @@
 
 
 /* room */
+.room {
+    width: 100dvw;
+    height: 100dvh;
+}
 .room_container {
     width: 700px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: var(--color-primary);
-    border-radius: 8px;
 }
 
 .input_box {
-    bottom: 0;
-    left: 0;
-    z-index: 10;
     background-color: var(--color-primary);
 }
 
 .messages-block {
-    height: 78.5vh;
+    flex-grow: 1;
     overflow: auto;
 }
 

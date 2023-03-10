@@ -56,9 +56,9 @@ const Room = () => {
     }
 
     return (
-        <div className='vh-100 vw-100 py-md-2 py-lg-2 py-sm-0'>
+        <div className='room py-md-2 py-lg-2 py-sm-0'>
             <div className='room_container m-auto position-relative'>
-                <div className='py-3 px-md-4 px-lg-4 px-2 d-flex border-bottom border-secondary rounded-top align-items-center room__header'>
+                <div className='py-3 px-md-4 px-lg-4 px-2 d-flex border-bottom border-secondary align-items-center room__header'>
                     <Link to='/' className='mb-0 me-2 px-2 py-1 back-icon rounded'><i className="fa-solid fa-arrow-left"></i></Link>
                     <p className='mb-0 text-white fs-5 room-id'>{id}</p>
                 </div> 
@@ -71,7 +71,7 @@ const Room = () => {
                     <div className="py-2" ref={emptyRef}></div>
                 </div>
 
-                <form className="input_box py-3 px-3 border-top border-secondary position-absolute w-100 d-flex align-items-center rounded-bottom" onSubmit={handleSend}>
+                <form className="input_box py-3 px-3 border-top border-secondary w-100 d-flex align-items-center" onSubmit={handleSend}>
                     <input type="text" className='text-input form-control bg-dark border-secondary text-secondary py-2' placeholder='Enter Message...' value={input} onChange={(e) => setInput(e.target.value)}/>
                     <button type='submit' className='btn send-message mx-3'><i className="fa-solid fa-2x fa-paper-plane"></i></button>
                 </form>
